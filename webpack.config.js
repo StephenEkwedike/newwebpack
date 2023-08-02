@@ -35,6 +35,15 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+           presets: ['es2015', 'react']
+        }
+     },
+
       
     ],
   },
