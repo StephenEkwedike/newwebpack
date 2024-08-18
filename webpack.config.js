@@ -5,12 +5,12 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    print: './src/print.js',
+    //print: './src/print.js',
   },
   devtool: 'inline-source-map',
- devServer: {
-   static: './dist',
- },
+  devServer: {
+    static: './dist',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'SuiDash',
@@ -36,18 +36,18 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?$/, // for JavaScript and JSX files
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-           presets: ['es2015', 'react']
-        }
-     },
-
-      
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
     ],
   },
- optimization: {
-   runtimeChunk: 'single',
- },
+  optimization: {
+    runtimeChunk: 'single',
+  },
 };
